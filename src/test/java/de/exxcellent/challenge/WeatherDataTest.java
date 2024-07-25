@@ -1,5 +1,7 @@
 package de.exxcellent.challenge;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +28,7 @@ class WeatherDataTest {
     @Test
     void getTemperatureSpread() {
         DayWeather day = new DayWeather(1, 3, 5);
-        assertEquals(day.getTemperaturSpread(), 2);
+        assertEquals(day.getTemperatureSpread(), 2);
     }
 
 
@@ -35,8 +37,11 @@ class WeatherDataTest {
         String testFile = "src/main/resources/de/exxcellent/challenge/weather.csv";
 
         assertDoesNotThrow(() -> {
-            WeatherDataReader reader = new WeatherDataReader();
+            FileReaderWeather reader = new FileReaderWeather();
             List<DayWeather> weatherData = reader.readWeatherData(testFile);
+            for (DayWeather dayWeather : weatherData) {
+                System.out.println(dayWeather.getTemperatureSpread());
+            }
         });
     }
 
