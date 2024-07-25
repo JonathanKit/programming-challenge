@@ -5,8 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Example JUnit 5 test case.
@@ -14,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
  */
 class WeatherDataTest {
     private String successLabel = "not successful";
+    private final String testFile = "src/main/resources/de/exxcellent/challenge/weather.csv";
+
 
     @BeforeEach
     void setUp() {
@@ -34,8 +35,6 @@ class WeatherDataTest {
 
     @Test
     void readWeatherCSV() {
-        String testFile = "src/main/resources/de/exxcellent/challenge/weather.csv";
-
         assertDoesNotThrow(() -> {
             FileReaderWeather reader = new FileReaderWeather();
             List<DayWeather> weatherData = reader.readWeatherData(testFile);
@@ -45,6 +44,26 @@ class WeatherDataTest {
         });
     }
 
+    @Test
+    void findDayWithSmallestSpread() {
+        WeatherAnalyzer weatherAnalyzer = new WeatherAnalyzer(testFile);
+        int dayWithSmallestTempSpread = weatherAnalyzer.findDayWithSmallestSpread();
+        assertNotEquals(dayWithSmallestTempSpread, -1, "-1 means an error occurred");
+        assertEquals(dayWithSmallestTempSpread, 14, "In the testfile day 14 has the lowest spread of temperature.");
+    }
+
+    @Test
+    void findDayWithSmallestSpreadWrongCsv() {
+        String testFileWrongCsv = "src/main/resources/de/exxcellent/challenge/weather_wrong_csv.csv";
+        WeatherAnalyzer weatherAnalyzer = new WeatherAnalyzer(testFileWrongCsv);
+        int dayWithSmallestTempSpread;
+        try {
+            dayWithSmallestTempSpread = weatherAnalyzer.findDayWithSmallestSpread();
+        } catch (Exception e) {
+            dayWithSmallestTempSpread = -1;
+        }
+        assertEquals(-1, dayWithSmallestTempSpread, "The testfile with an error in the csv file should fail.");
+    }
 
 
 

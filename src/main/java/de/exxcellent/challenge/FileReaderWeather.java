@@ -20,8 +20,8 @@ public class FileReaderWeather {
                     int minTemp = Integer.parseInt(values[2]);
                     weatherData.add(new DayWeather(day, minTemp, maxTemp));
                 } catch (NumberFormatException e) {
-                    System.err.println("Error parsing data: " + line);
-                    // skipping the line
+                    System.err.println("Error parsing data row: " + line);
+                    throw e;
                 }
             }
         } catch (IOException e) {
