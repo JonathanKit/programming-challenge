@@ -12,7 +12,7 @@ public class WeatherAnalyzer {
 
     public int findDayWithSmallestSpread() {
         FileReaderWeather fw = new FileReaderWeather();
-        List<DayWeather> weatherData = null;
+        List<DayWeather> weatherData;
         try {
             weatherData = fw.readWeatherData(this.filename);
         } catch (IOException e) {

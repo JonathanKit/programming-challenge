@@ -15,8 +15,15 @@ public final class App {
     public static void main(String... args) {
 
         // Your preparation code …
+        String filename = "src/main/resources/de/exxcellent/challenge/weather_wrong_csv.csv";
+        WeatherAnalyzer weatherAnalyzer = new WeatherAnalyzer(filename);
+        int dayWithSmallestTempSpread;
+        try {
+            dayWithSmallestTempSpread = weatherAnalyzer.findDayWithSmallestSpread();     // Your day analysis function call
+        } catch (Exception e) {
+            dayWithSmallestTempSpread = -1;
+        }
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
         String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
