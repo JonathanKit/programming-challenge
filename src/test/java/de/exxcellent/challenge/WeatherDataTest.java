@@ -38,9 +38,8 @@ class WeatherDataTest {
         assertDoesNotThrow(() -> {
             FileReaderWeather reader = new FileReaderWeather();
             List<DayWeather> weatherData = reader.readWeatherData(testFile);
-            for (DayWeather dayWeather : weatherData) {
-                System.out.println(dayWeather.getTemperatureSpread());
-            }
+            assertNotNull(weatherData);
+            assertNotEquals(0, weatherData.size());
         });
     }
 
