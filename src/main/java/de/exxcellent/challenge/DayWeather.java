@@ -1,14 +1,18 @@
 package de.exxcellent.challenge;
 
 public class DayWeather {
-    int day;
-    int maxTemp;
-    int minTemp;
+    private final String day;
+    private final int maxTemp;
+    private final int minTemp;
 
-    public DayWeather(int day, int minTemp, int maxTemp) {
+    public DayWeather(String day, int maxTemp, int minTemp) {
         this.day = day;
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;
+    }
+
+    public String getDay() {
+        return day;
     }
 
     public double getTemperatureSpread() {
