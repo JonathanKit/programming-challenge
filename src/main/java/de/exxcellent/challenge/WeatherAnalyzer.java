@@ -10,6 +10,7 @@ public class WeatherAnalyzer {
         this.filename = filename;
     }
 
+    // the file with weather data has in column 0: day number, column 1: max temperature, column 2: min temperature
     public List<WeatherRecord> getWeatherData(String filename) {
         FileReaderCsv<WeatherRecord> weatherReader = new FileReaderCsv<>(values -> new WeatherRecord(
                 values[0],

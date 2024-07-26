@@ -11,10 +11,11 @@ public class FootballAnalyzer {
     }
 
     public List<FootballRecord> getFootballData(String filename) {
+        // The file with football data has in column 0: team name, column 5: goals scored, column 6: goals allowed
         FileReaderCsv<FootballRecord> footballReader = new FileReaderCsv<>(values -> new FootballRecord(
                 values[0],
-                Integer.parseInt(values[1]),
-                Integer.parseInt(values[2])
+                Integer.parseInt(values[5]),
+                Integer.parseInt(values[6])
         ));
         List<FootballRecord> footballData;
         try {
