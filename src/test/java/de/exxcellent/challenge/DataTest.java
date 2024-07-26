@@ -16,19 +16,19 @@ class DataTest {
 
     @Test
     void getTemperatureSpread() {
-        DayWeather day = new DayWeather("1", 5, 3);
+        WeatherRecord day = new WeatherRecord("1", 5, 3);
         assertEquals(day.getTemperatureSpread(), 2);
     }
 
     @Test
     void readWeatherCSV() {
         assertDoesNotThrow(() -> {
-            FileReaderCsv<DayWeather> weatherReader = new FileReaderCsv<>(values -> new DayWeather(
+            FileReaderCsv<WeatherRecord> weatherReader = new FileReaderCsv<>(values -> new WeatherRecord(
                     values[0],
                     Integer.parseInt(values[1]),
                     Integer.parseInt(values[2])
             ));
-            List<DayWeather> weatherData = weatherReader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
+            List<WeatherRecord> weatherData = weatherReader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
 
             assertNotNull(weatherData);
             assertNotEquals(0, weatherData.size());

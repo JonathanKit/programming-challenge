@@ -10,13 +10,13 @@ public class WeatherAnalyzer {
         this.filename = filename;
     }
 
-    public List<DayWeather> getWeatherData(String filename) {
-        FileReaderCsv<DayWeather> weatherReader = new FileReaderCsv<>(values -> new DayWeather(
+    public List<WeatherRecord> getWeatherData(String filename) {
+        FileReaderCsv<WeatherRecord> weatherReader = new FileReaderCsv<>(values -> new WeatherRecord(
                 values[0],
                 Integer.parseInt(values[1]),
                 Integer.parseInt(values[2])
         ));
-        List<DayWeather> weatherData;
+        List<WeatherRecord> weatherData;
         try {
             weatherData = weatherReader.readData(filename);
         } catch (IOException e) {
@@ -26,7 +26,7 @@ public class WeatherAnalyzer {
     }
 
     public String findDayWithSmallestSpread() {
-        List<DayWeather> weatherData;
+        List<WeatherRecord> weatherData;
         try {
             weatherData = getWeatherData(this.filename);
         } catch(Exception e) {
@@ -36,7 +36,7 @@ public class WeatherAnalyzer {
 
         String minSpreadDay = "";
         double minSpread = Double.MAX_VALUE;
-        for (DayWeather weatherDatum : weatherData) {
+        for (WeatherRecord weatherDatum : weatherData) {
             double spread = weatherDatum.getTemperatureSpread();
             if (spread < minSpread) {
                 minSpread = spread;
