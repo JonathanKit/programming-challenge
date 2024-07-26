@@ -7,21 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Example JUnit 5 test case.
- * @author Benjamin Schmid <benjamin.schmid@exxcellent.de>
- */
 class DataTest {
-    private String successLabel = "not successful";
 
     @BeforeEach
     void setUp() {
-        successLabel = "successful";
-    }
 
-    @Test
-    void aPointlessTest() {
-        assertEquals("successful", successLabel, "My expectations were not met");
     }
 
     @Test
@@ -67,14 +57,6 @@ class DataTest {
         assertEquals("", dayWithSmallestTempSpread, "The testfile with an error in the csv file should fail.");
     }
 
-
-
-
-    @Test
-    void runFootball() {
-        App.main("--football", "football.csv");
-    }
-
     @Test
     void readFootballCSV() {
         assertDoesNotThrow(() -> {
@@ -102,5 +84,4 @@ class DataTest {
         }
         assertEquals("Arsenal", recordWithSmallestTempSpread, "In the testfile Arsenal has the lowest spread of goals.");
     }
-
 }

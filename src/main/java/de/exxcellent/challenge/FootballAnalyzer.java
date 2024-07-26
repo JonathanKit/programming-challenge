@@ -18,7 +18,7 @@ public class FootballAnalyzer {
         ));
         List<FootballRecord> footballData;
         try {
-            footballData = footballReader.readData(this.filename);
+            footballData = footballReader.readData(filename);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

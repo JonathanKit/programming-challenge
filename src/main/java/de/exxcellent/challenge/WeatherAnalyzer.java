@@ -18,7 +18,7 @@ public class WeatherAnalyzer {
         ));
         List<DayWeather> weatherData;
         try {
-            weatherData = weatherReader.readData(this.filename);
+            weatherData = weatherReader.readData(filename);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

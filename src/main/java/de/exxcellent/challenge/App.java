@@ -28,7 +28,7 @@ public final class App {
         // Football Analysis
         final String filenameFootballData = "src/main/resources/de/exxcellent/challenge/football.csv";
         FootballAnalyzer footballAnalyzer = new FootballAnalyzer(filenameFootballData);
-        String TeamWithSmallestGoalSpread = "";
+        String TeamWithSmallestGoalSpread;
         try {
             TeamWithSmallestGoalSpread = footballAnalyzer.findRecordWithSmallestSpread();
         } catch (Exception e) {
