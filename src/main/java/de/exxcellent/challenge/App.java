@@ -14,19 +14,26 @@ public final class App {
      */
     public static void main(String... args) {
 
-        // Your preparation code …
-        String filename = "src/main/resources/de/exxcellent/challenge/weather_wrong_csv.csv";
-        WeatherAnalyzer weatherAnalyzer = new WeatherAnalyzer(filename);
-        int dayWithSmallestTempSpread;
+        // Weather Analysis
+        final String filenameWeatherData = "src/main/resources/de/exxcellent/challenge/weather.csv";
+        WeatherAnalyzer weatherAnalyzer = new WeatherAnalyzer(filenameWeatherData);
+        String dayWithSmallestTempSpread;
         try {
-            dayWithSmallestTempSpread = weatherAnalyzer.findDayWithSmallestSpread();     // Your day analysis function call
+            dayWithSmallestTempSpread = weatherAnalyzer.findDayWithSmallestSpread();
         } catch (Exception e) {
-            dayWithSmallestTempSpread = -1;
+            dayWithSmallestTempSpread = "";
         }
-
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
-        String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …
-        System.out.printf("Team with smallest goal spread       : %s%n", teamWithSmallestGoalSpread);
+        // Football Analysis
+        final String filenameFootballData = "src/main/resources/de/exxcellent/challenge/football.csv";
+        FootballAnalyzer footballAnalyzer = new FootballAnalyzer(filenameFootballData);
+        String TeamWithSmallestGoalSpread = "";
+        try {
+            TeamWithSmallestGoalSpread = footballAnalyzer.findRecordWithSmallestSpread();
+        } catch (Exception e) {
+            TeamWithSmallestGoalSpread = "";
+        }
+        System.out.printf("Team with smallest goal spread       : %s%n", TeamWithSmallestGoalSpread);
     }
 }
