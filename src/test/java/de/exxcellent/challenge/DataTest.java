@@ -75,13 +75,13 @@ class DataTest {
     @Test
     void findFootballRecordWithSmallestSpread() {
         String testFile = "src/main/resources/de/exxcellent/challenge/football.csv";
-        WeatherAnalyzer weatherAnalyzer = new WeatherAnalyzer(testFile);
+        FootballAnalyzer footballAnalyzer = new FootballAnalyzer(testFile);
         String recordWithSmallestTempSpread;
         try {
-            recordWithSmallestTempSpread = weatherAnalyzer.findDayWithSmallestSpread();
+            recordWithSmallestTempSpread = footballAnalyzer.findRecordWithSmallestSpread();
         } catch (Exception e) {
             recordWithSmallestTempSpread = "";
         }
-        assertEquals("Arsenal", recordWithSmallestTempSpread, "In the testfile Arsenal has the lowest spread of goals.");
+        assertEquals("Aston_Villa", recordWithSmallestTempSpread, "In the testfile Aston_Villa has the lowest spread of goals.");
     }
 }
