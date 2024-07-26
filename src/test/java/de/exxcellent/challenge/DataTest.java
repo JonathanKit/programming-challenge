@@ -84,4 +84,11 @@ class DataTest {
         }
         assertEquals("Aston_Villa", recordWithSmallestTempSpread, "In the testfile Aston_Villa has the lowest spread of goals.");
     }
+
+    @Test
+    void getGoalDifference() {
+        FootballRecord footballRecord = new FootballRecord("test_team", 5, 10);
+        assertEquals(5, footballRecord.getGoalDifference(), "The goal difference is 5");
+    }
 }
+
